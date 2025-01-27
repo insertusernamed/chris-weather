@@ -1,8 +1,139 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #72b8e4 0%, #3d82b3 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.weather-title {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.list-group-item {
+  border: none;
+  background: transparent;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-label {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.weather-value {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.temperature-value {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.current-temp {
+  padding: 2rem 0;
+  position: relative;
+}
+
+.temp-icon {
+  font-size: 2.5rem;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.weather-subtitle {
+  color: #95a5a6;
+  font-size: 1rem;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+  background: rgba(236, 240, 241, 0.5);
+  border-radius: 15px;
+  margin: 1rem 0;
+}
+
+.detail-item {
+  text-align: center;
+}
+
+.detail-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.humidity-icon {
+  color: #3498db;
+}
+
+.pressure-icon {
+  color: #9b59b6;
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.update-time {
+  color: #95a5a6;
+  font-size: 0.9rem;
+}
+
+.debug-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: #95a5a6;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #7f8c8d;
 }

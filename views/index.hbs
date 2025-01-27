@@ -1,25 +1,67 @@
 <div class="container mt-5">
-    <div class="card">
-        <div class="card-body">
-            <h2 class="card-title">Weather Information</h2>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Temperature:</span>
-                    <span>{{response.temperature}}{{response.tempUnit}}</span>
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Humidity:</span>
-                    <span>{{response.humidity}}</span>
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Pressure:</span>
-                    <span>{{response.pressure}}{{response.pressureUnit}}</span>
-                </li>
-                <li class="list-group-item">
-                    <span class="font-weight-bold">Timestamp:</span>
-                    <span>{{response.dstamp}}</span>
-                </li>
-            </ul>
+    <div class="weather-card">
+        <div class="card-body p-4">
+            <h2 class="weather-title">
+                <i class="fa-solid fa-warehouse me-2"></i>
+                Chris's Garage
+            </h2>
+            {{#if response}}
+            <div class="current-temp text-center mb-4">
+                <i class="fa-solid fa-temperature-high temp-icon"></i>
+                <div class="temperature-value">{{response.temperature}}°C</div>
+                <div class="weather-subtitle">Current Temperature</div>
+            </div>
+
+            <div class="weather-details">
+                <div class="detail-item">
+                    <i class="fa-solid fa-droplet detail-icon humidity-icon"></i>
+                    <div class="detail-info">
+                        <span class="detail-value">{{response.humidity}}%</span>
+                        <span class="detail-label">Humidity</span>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fa-solid fa-gauge-high detail-icon pressure-icon"></i>
+                    <div class="detail-info">
+                        <span class="detail-value">{{response.pressure}} mb</span>
+                        <span class="detail-label">Pressure</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="update-time text-center mt-4">
+                <i class="fa-regular fa-clock me-2"></i>
+                Updated {{response.formattedDate}}
+            </div>
+            {{else}}
+            <div class="text-center p-4">
+                <i class="fas fa-exclamation-triangle text-warning mb-3" style="font-size: 2rem;"></i>
+                <p class="mb-0">No weather data available</p>
+            </div>
+            {{/if}}
+
+            <div class="text-center mt-4">
+                <button class="btn btn-sm btn-secondary" onclick="toggleDebug()">
+                    <i class="fas fa-bug me-2"></i>Toggle Debug Info
+                </button>
+            </div>
+
+            {{#if debug}}
+            <div id="debugSection" class="debug-section" style="display: none;">
+                <h4 class="text-muted mb-3">Debug Information:</h4>
+                <pre class="mb-0">{{debug}}</pre>
+            </div>
+            {{/if}}
         </div>
     </div>
 </div>
+
+<script>
+    function toggleDebug() {
+        const debug = document.getElementById('debugSection');
+        if (debug) {
+            debug.style.display = debug.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+</script>
