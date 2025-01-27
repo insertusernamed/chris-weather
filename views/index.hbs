@@ -1,4 +1,28 @@
 <div class="container mt-4 mb-4">
+    <button class="theme-settings-btn" onclick="toggleThemeModal()">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <div id="themeModal" class="theme-modal" style="display: none;">
+        <div class="theme-modal-content">
+            <h3 class="theme-modal-title">Theme Settings</h3>
+            <div class="theme-options">
+                <button onclick="setTheme('auto')" class="theme-option" data-theme="auto">
+                    <i class="fas fa-clock"></i> Auto (Time-based)
+                </button>
+                <button onclick="setTheme('light')" class="theme-option" data-theme="light">
+                    <i class="fas fa-sun"></i> Light
+                </button>
+                <button onclick="setTheme('dark')" class="theme-option" data-theme="dark">
+                    <i class="fas fa-moon"></i> Dark
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.body.className = '{{timeOfDay}}';
+    </script>
     <div class="weather-card">
         <div class="card-body">
             <h2 class="weather-title">
@@ -72,4 +96,52 @@
             btn.setAttribute('aria-expanded', !isVisible);
         }
     }
+
+    function initializeTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'auto';
+        setTheme(savedTheme, false);
+
+        // Set initial active state of buttons
+        document.querySelectorAll('.theme-option').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.theme === savedTheme);
+        });
+
+        // If theme is auto, apply the time-based class
+        if (savedTheme === 'auto') {
+            document.body.className = '{{timeOfDay}}';
+        }
+    }
+
+    function setTheme(theme, save = true) {
+        if (save) {
+            localStorage.setItem('theme', theme);
+        }
+
+        if (theme === 'auto') {
+            document.body.className = '{{timeOfDay}}';
+        } else {
+            document.body.className = theme;
+        }
+
+        // Update active state of buttons
+        document.querySelectorAll('.theme-option').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.theme === theme);
+        });
+    }
+
+    function toggleThemeModal() {
+        const modal = document.getElementById('themeModal');
+        modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function (event) {
+        const modal = document.getElementById('themeModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Make sure to run after DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', initializeTheme);
 </script>

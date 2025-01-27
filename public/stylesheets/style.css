@@ -1,3 +1,11 @@
+:root {
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-text: #0a2647;
+  --card-secondary: #64748b;
+  --card-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --card-border: rgba(255, 255, 255, 0.3);
+}
+
 body {
   background: linear-gradient(125deg, #0a2647 0%, #144272 50%, #205295 100%);
   min-height: 100vh;
@@ -8,6 +16,40 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 1s ease;
+}
+
+body.morning {
+  background: linear-gradient(125deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%);
+}
+
+body.afternoon {
+  background: linear-gradient(125deg, #0a2647 0%, #144272 50%, #205295 100%);
+}
+
+body.evening {
+  background: linear-gradient(125deg, #2c3e50 0%, #3498db 50%, #e74c3c 100%);
+}
+
+body.night {
+  background: linear-gradient(125deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+body.light {
+  background: linear-gradient(125deg, #e0eafc 0%, #cfdef3 100%);
+}
+
+body.dark {
+  background: linear-gradient(125deg, #1a1a1a 0%, #2d3436 100%);
+}
+
+body.dark,
+body.night {
+  --card-bg: rgba(30, 41, 59, 0.95);
+  --card-text: #e2e8f0;
+  --card-secondary: #94a3b8;
+  --card-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+  --card-border: rgba(255, 255, 255, 0.1);
 }
 
 body::before {
@@ -37,14 +79,14 @@ a {
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-bg);
   border-radius: 30px;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.2),
     0 1px 3px rgba(0, 0, 0, 0.05),
     inset 0 1px 1px rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--card-border);
   overflow: hidden;
   transform: translateY(0);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -71,7 +113,7 @@ a {
 }
 
 .weather-title {
-  color: #0a2647;
+  color: var(--card-text);
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
@@ -96,7 +138,7 @@ a {
 .temperature-value {
   font-size: 6rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #0a2647 0%, #205295 100%);
+  background: var(--card-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
@@ -118,7 +160,7 @@ a {
 }
 
 .current-temp {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: var(--card-gradient);
   padding: 2rem;
   border-radius: 25px;
   margin-bottom: 1.5rem;
@@ -135,7 +177,7 @@ a {
 }
 
 .weather-subtitle {
-  color: #95a5a6;
+  color: var(--card-secondary);
   font-size: 1rem;
 }
 
@@ -144,14 +186,14 @@ a {
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: var(--card-gradient);
   border-radius: 25px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
   width: 100%;
 }
 
 .detail-item {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 1.25rem;
   display: flex;
@@ -193,25 +235,25 @@ a {
 .detail-value {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #0a2647;
+  color: var(--card-text);
   line-height: 1.2;
   margin-bottom: 0.25rem;
 }
 
 .detail-label {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--card-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
 }
 
 .update-time {
-  color: #64748b;
+  color: var(--card-secondary);
   font-size: 0.9rem;
   font-weight: 500;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: var(--card-gradient);
   border-radius: 15px;
   margin-top: 1.5rem;
   display: flex;
@@ -223,15 +265,15 @@ a {
 .debug-section {
   margin-top: 1.5rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: var(--card-gradient);
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  color: #475569;
+  background: var(--card-gradient);
+  color: var(--card-secondary);
   border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 0.875rem 2rem;
   font-size: 0.95rem;
@@ -242,21 +284,105 @@ a {
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-  color: #334155;
+  background: var(--card-gradient);
+  color: var(--card-text);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .comfort-description {
-  color: #0a2647;
+  color: var(--card-text);
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background: rgba(10, 38, 71, 0.05);
+  background: rgba(var(--card-text-rgb), 0.1);
   border-radius: 12px;
   display: inline-block;
+}
+
+.theme-settings-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.theme-settings-btn:hover {
+  transform: rotate(30deg);
+}
+
+.theme-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  backdrop-filter: blur(5px);
+}
+
+.theme-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+}
+
+.theme-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #0a2647;
+}
+
+.theme-options {
+  display: grid;
+  gap: 1rem;
+}
+
+.theme-option {
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-option:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+}
+
+.theme-option.active {
+  border-color: #0a2647;
+  background: #f1f5f9;
+}
+
+.theme-option i {
+  font-size: 1.2rem;
 }
 
 @media (max-width: 640px) {
@@ -288,4 +414,17 @@ a {
   .detail-value {
     font-size: 1.4rem;
   }
+
+  .theme-settings-btn {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.weather-card,
+.weather-card *,
+.btn-secondary {
+  transition: all 0.3s ease;
 }

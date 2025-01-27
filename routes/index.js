@@ -27,6 +27,15 @@ function getComfortDescription(temperature, humidity) {
     return "Cool but comfortable";
 }
 
+function getTimeOfDay(dateString) {
+    const hour = new Date(dateString).getHours();
+
+    if (hour >= 5 && hour < 12) return "morning";
+    if (hour >= 12 && hour < 17) return "afternoon";
+    if (hour >= 17 && hour < 20) return "evening";
+    return "night";
+}
+
 /* GET home page. */
 router.get("/", async function (req, res, next) {
     try {
@@ -51,11 +60,13 @@ router.get("/", async function (req, res, next) {
                 Number(response.data.temperature),
                 Number(response.data.humidity)
             ),
+            timeOfDay: getTimeOfDay(response.data.dstamp),
         };
 
         res.render("index", {
             response: data,
             debug: JSON.stringify(data, null, 2),
+            timeOfDay: data.timeOfDay,
         });
     } catch (error) {
         console.error("Detailed error:", {
