@@ -19,20 +19,44 @@ body {
   transition: background 1s ease;
 }
 
+body.dawn {
+  background: linear-gradient(125deg, #614385 0%, #516395 50%, #7b7fd0 100%);
+}
+
+body.early-morning {
+  background: linear-gradient(125deg, #ff9a9e 0%, #fad0c4 50%, #ffd1ff 100%);
+}
+
 body.morning {
-  background: linear-gradient(125deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%);
+  background: linear-gradient(125deg, #ffd3b6 0%, #ffaaa5 50%, #ffecd2 100%);
+}
+
+body.late-morning {
+  background: linear-gradient(125deg, #4ca1af 0%, #7dd8c7 50%, #c4e0e5 100%);
+}
+
+body.noon {
+  background: linear-gradient(125deg, #2193b0 0%, #3498db 50%, #6dd5ed 100%);
 }
 
 body.afternoon {
-  background: linear-gradient(125deg, #0a2647 0%, #144272 50%, #205295 100%);
+  background: linear-gradient(125deg, #4b9fe1 0%, #63b8ff 50%, #89cff0 100%);
+}
+
+body.late-afternoon {
+  background: linear-gradient(125deg, #2980b9 0%, #2c3e50 50%, #3498db 100%);
 }
 
 body.evening {
-  background: linear-gradient(125deg, #2c3e50 0%, #3498db 50%, #e74c3c 100%);
+  background: linear-gradient(125deg, #ff7e5f 0%, #feb47b 50%, #ffd4b8 100%);
+}
+
+body.dusk {
+  background: linear-gradient(125deg, #355c7d 0%, #6c5b7b 50%, #c06c84 100%);
 }
 
 body.night {
-  background: linear-gradient(125deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  background: linear-gradient(125deg, #0f2027 0%, #162c3b 50%, #1e3749 100%);
 }
 
 body.light {
@@ -272,6 +296,12 @@ a {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.debug-section code {
+  color: var(--card-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .btn-secondary {
   background: var(--card-gradient);
   color: var(--card-secondary);
@@ -386,6 +416,30 @@ a {
   font-size: 1.2rem;
 }
 
+.theme-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.preview-btn {
+  padding: 0.5rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--card-text);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preview-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--card-gradient);
+}
+
 @media (max-width: 640px) {
   body {
     padding: 15px;
@@ -428,4 +482,10 @@ a {
 .weather-card *,
 .btn-secondary {
   transition: all 0.3s ease;
+}
+
+.debug-section code {
+  color: var(--card-text);
+  white-space: pre-wrap;
+  word-break: break-word;
 }

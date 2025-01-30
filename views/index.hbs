@@ -79,6 +79,21 @@
             {{#if debug}}
             <div id="debugSection" class="debug-section" style="display: none;">
                 <h4 class="text-muted mb-3 fs-6 fw-bold">Debug Information</h4>
+                <div class="theme-preview-section mb-3">
+                    <h5 class="text-muted mb-2 fs-6">Theme Preview</h5>
+                    <div class="theme-preview-grid">
+                        <button onclick="previewTheme('dawn')" class="preview-btn">Dawn</button>
+                        <button onclick="previewTheme('early-morning')" class="preview-btn">Early Morning</button>
+                        <button onclick="previewTheme('morning')" class="preview-btn">Morning</button>
+                        <button onclick="previewTheme('late-morning')" class="preview-btn">Late Morning</button>
+                        <button onclick="previewTheme('noon')" class="preview-btn">Noon</button>
+                        <button onclick="previewTheme('afternoon')" class="preview-btn">Afternoon</button>
+                        <button onclick="previewTheme('late-afternoon')" class="preview-btn">Late Afternoon</button>
+                        <button onclick="previewTheme('evening')" class="preview-btn">Evening</button>
+                        <button onclick="previewTheme('dusk')" class="preview-btn">Dusk</button>
+                        <button onclick="previewTheme('night')" class="preview-btn">Night</button>
+                    </div>
+                </div>
                 <pre class="mb-0"><code>{{debug}}</code></pre>
             </div>
             {{/if}}
@@ -140,6 +155,23 @@
         if (event.target === modal) {
             modal.style.display = 'none';
         }
+    }
+
+    function previewTheme(theme) {
+        // Store the current theme
+        const currentTheme = localStorage.getItem('theme') || 'auto';
+
+        // Apply the preview theme
+        document.body.className = theme;
+
+        // Reset to the original theme after 3 seconds
+        setTimeout(() => {
+            if (currentTheme === 'auto') {
+                document.body.className = '{{timeOfDay}}';
+            } else {
+                document.body.className = currentTheme;
+            }
+        }, 3000);
     }
 
     // Make sure to run after DOM is fully loaded
